@@ -1,0 +1,22 @@
+<p>Formulaire: {{ model.value | json }}</p>
+
+<form [formGroup]="model">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Nom du burger"/>
+  </mat-form-field>
+  <h3>Ingredients</h3>
+  <div formArrayName="ingredients">
+    <div *ngFor="let ing of ingredientsForm.controls, let i=index" [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>Ingredients</mat-label>
+        <mat-select formControlName="ing">
+          <mat-option *ngFor="let ingredient of ingredients">
+            {{ingredient}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
+  </div>
+</form>
+
