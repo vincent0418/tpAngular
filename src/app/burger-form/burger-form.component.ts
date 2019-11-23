@@ -26,7 +26,6 @@ export class BurgerFormComponent implements OnInit {
   ngOnInit() {
     this.model = this.formBuilder.group({
       name: ['', [
-        Validators.required,
         nameContainsBurgerValidator("burger")
       ]],
       ingredients: this.formBuilder.array([], [
@@ -49,6 +48,7 @@ export class BurgerFormComponent implements OnInit {
       ing: []
     });
     this.ingredients.push(ingredient);
+    console.log(this.ingredients.status);
   }
 
 }
