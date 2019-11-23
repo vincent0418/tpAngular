@@ -8,7 +8,6 @@
         <mat-error *ngIf="name.invalid && name.errors?.mustContain">
           Le nom doit contenir "{{ name.errors?.mustContain }}"
         </mat-error>
-
       </mat-form-field>
 
       <h3>Ingredients</h3>
@@ -21,17 +20,19 @@
                 {{ingredient}}
               </mat-option>
             </mat-select>
-
           </mat-form-field>
         </div>
+
         <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
           Pas d'ingredient
         </mat-error>
 
-        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
+        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minlength">
           Pas assez d'ingredient
         </mat-error>
+
         <button mat-raised-button type="button" color="primary" (click)="addIngredient()">Ajout</button>
+
       </div>
 
       <button mat-raised-button type="submit" [disabled]="model.invalid">Créer</button>
