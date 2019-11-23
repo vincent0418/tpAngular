@@ -1,17 +1,21 @@
-<p>Formulaire: {{ model.value | json }}</p>
-
 <form [formGroup]="model">
 
   <mat-form-field>
     <input matInput formControlName="name" placeholder="Nom du burger"/>
+
     <mat-error *ngIf="name.invalid && name.errors?.mustContain">
       Le nom doit contenir "{{ name.errors?.mustContain }}"
     </mat-error>
+
+    <mat-error *ngIf="name.invalid && name.errors?.required">
+      Le nom est obligatoire
+    </mat-error>
+
   </mat-form-field>
 
   <h3>Ingredients</h3>
   <div formArrayName="ingredients">
-    <div *ngFor="let ing of ingredientsForm.controls, let i=index" [formGroupName]="i">
+    <div *ngFor="let ing of ingredients.controls, let i=index" [formGroupName]="i">
       <mat-form-field>
         <mat-label>Ingredients</mat-label>
         <mat-select formControlName="ing">
@@ -19,9 +23,21 @@
             {{ingredient}}
           </mat-option>
         </mat-select>
+
+        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
+          Pas d'ingredient
+        </mat-error>
+
+        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
+          Pas assez d'ingredient
+        </mat-error>
+
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
   </div>
+
+  <button mat-raised-button type="submit">Créer</button>
+
 </form>
 

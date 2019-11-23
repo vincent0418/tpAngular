@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {nameContainsBurgerValidator} from "./name.validator";
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-burger-form',
@@ -26,9 +26,13 @@ export class BurgerFormComponent implements OnInit {
   ngOnInit() {
     this.model = this.formBuilder.group({
       name: ['', [
+        Validators.required,
         nameContainsBurgerValidator("burger")
       ]],
-      ingredients: this.formBuilder.array([])
+      ingredients: this.formBuilder.array([], [
+        Validators.required,
+        Validators.minLength(3)
+      ])
     });
   }
 
@@ -36,7 +40,7 @@ export class BurgerFormComponent implements OnInit {
     return this.model.get('name');
   }
 
-  get ingredientsForm() {
+  get ingredients() {
     return this.model.get('ingredients') as FormArray;
   }
 
@@ -44,7 +48,7 @@ export class BurgerFormComponent implements OnInit {
     const ingredient = this.formBuilder.group({
       ing: []
     });
-    this.ingredientsForm.push(ingredient);
+    this.ingredients.push(ingredient);
   }
 
 }
