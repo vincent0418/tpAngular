@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {nameContainsBurgerValidator} from "./name.validator";
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-burger-form',
@@ -49,6 +49,11 @@ export class BurgerFormComponent implements OnInit {
     });
     this.ingredients.push(ingredient);
     console.log(this.ingredients.status);
+  }
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+    console.log(f.valid);
   }
 
 }
