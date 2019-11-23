@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {nameContainsBurgerValidator} from "./name.validator";
 
 @Component({
   selector: 'app-burger-form',
@@ -24,9 +25,15 @@ export class BurgerFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = this.formBuilder.group({
-      name: '',
+      name: ['', [
+        nameContainsBurgerValidator("burger")
+      ]],
       ingredients: this.formBuilder.array([])
     });
+  }
+
+  get name() {
+    return this.model.get('name');
   }
 
   get ingredientsForm() {

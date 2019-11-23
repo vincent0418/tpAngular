@@ -4,6 +4,9 @@
 
   <mat-form-field>
     <input matInput formControlName="name" placeholder="Nom du burger"/>
+    <mat-error *ngIf="name.invalid && name.errors?.mustContain">
+      Le nom doit contenir "{{ name.errors?.mustContain }}"
+    </mat-error>
   </mat-form-field>
 
   <h3>Ingredients</h3>
