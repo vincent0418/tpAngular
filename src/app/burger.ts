@@ -1,10 +1,9 @@
 export class Burger {
 
-  constructor(){
-    this.ingredients = [];
+  constructor(
+    public name: string,
+    public ingredients: string[],
+    public creationDate: Date,
+  ) {
   }
-
-  name: string;
-  ingredients: string[];
-  creationDate: Date;
 }
