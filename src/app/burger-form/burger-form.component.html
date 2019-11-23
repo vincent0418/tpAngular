@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <form [formGroup]="model">
+    <form [formGroup]="model" (ngSubmit)="onSubmitForm()">
 
       <mat-form-field>
         <input matInput formControlName="name" placeholder="Nom du burger"/>
@@ -22,8 +22,6 @@
               </mat-option>
             </mat-select>
 
-
-
           </mat-form-field>
         </div>
         <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
@@ -33,16 +31,18 @@
         <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
           Pas assez d'ingredient
         </mat-error>
-        <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
+        <button mat-raised-button type="button" color="primary" (click)="addIngredient()">Ajout</button>
       </div>
 
-      <button mat-raised-button type="submit" (click)="onSubmitForm()" [disabled]="model.invalid">Créer</button>
+      <button mat-raised-button type="submit" [disabled]="model.invalid">Créer</button>
 
     </form>
   </div>
+
   <div class="col-md-6" *ngIf="burger !== undefined">
     <app-burger [burger]="burger"></app-burger>
   </div>
+
 </div>
 
 

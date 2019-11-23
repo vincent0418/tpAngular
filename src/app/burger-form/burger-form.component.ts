@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {nameContainsBurgerValidator} from './name.validator';
-import {FormArray, FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Burger} from '../burger';
 
 @Component({
