@@ -22,16 +22,17 @@
               </mat-option>
             </mat-select>
 
-            <label *ngIf="ingredients.invalid && ingredients.errors?.required">
-              Pas d'ingredient
-            </label>
 
-            <label *ngIf="ingredients.invalid && ingredients.errors?.minLength">
-              Pas assez d'ingredient
-            </label>
 
           </mat-form-field>
         </div>
+        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
+          Pas d'ingredient
+        </mat-error>
+
+        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
+          Pas assez d'ingredient
+        </mat-error>
         <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
       </div>
 
