@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {nameContainsBurgerValidator} from "./name.validator";
 import {FormArray, FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Burger} from "../burger";
 
 @Component({
   selector: 'app-burger-form',
@@ -9,6 +10,7 @@ import {FormArray, FormBuilder, FormGroup, NgForm, Validators} from '@angular/fo
 })
 export class BurgerFormComponent implements OnInit {
   model: FormGroup;
+  burger: Burger;
 
   ingredientList: string[] = [
     'Cornichon',
@@ -24,6 +26,7 @@ export class BurgerFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.burger = new Burger();
     this.model = this.formBuilder.group({
       name: ['', [
         nameContainsBurgerValidator("burger")
@@ -48,12 +51,22 @@ export class BurgerFormComponent implements OnInit {
       ing: []
     });
     this.ingredients.push(ingredient);
-    console.log(this.ingredients.status);
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
     console.log(f.valid);
+    console.log(f.value);
   }
+  onSubmitForm(f: NgForm) {
+    if (f.valid){
+      let burger = this.burger;
+      burger.name = f.value.name;
+      f.value.ingredients.forEach(function(ingredient){
+        burger.ingredients.push(ingredient);
+      });
+      burger.creationDate = new Date();
+    }
+  }
+
 
 }

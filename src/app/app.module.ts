@@ -5,12 +5,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BurgerFormComponent } from './burger-form/burger-form.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule
+} from '@angular/material';
+import { BurgerComponent } from './burger/burger.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BurgerFormComponent
+    BurgerFormComponent,
+    BurgerComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +29,8 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, Ma
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

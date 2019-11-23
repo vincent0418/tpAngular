@@ -1,39 +1,48 @@
-<form [formGroup]="model" (ngSubmit)="onSubmit(model)">
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="model" (ngSubmit)="onSubmit(model)">
 
-  <mat-form-field>
-    <input matInput formControlName="name" placeholder="Nom du burger"/>
-
-    <mat-error *ngIf="name.invalid && name.errors?.mustContain">
-      Le nom doit contenir "{{ name.errors?.mustContain }}"
-    </mat-error>
-
-  </mat-form-field>
-
-  <h3>Ingredients</h3>
-  <div formArrayName="ingredients">
-    <div *ngFor="let ing of ingredients.controls, let i=index" [formGroupName]="i">
       <mat-form-field>
-        <mat-label>Ingredients</mat-label>
-        <mat-select formControlName="ing">
-          <mat-option *ngFor="let ingredient of ingredientList" value="{{ingredient}}">
-            {{ingredient}}
-          </mat-option>
-        </mat-select>
+        <input matInput formControlName="name" placeholder="Nom du burger"/>
 
-        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
-          Pas d'ingredient
-        </mat-error>
-
-        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
-          Pas assez d'ingredient
+        <mat-error *ngIf="name.invalid && name.errors?.mustContain">
+          Le nom doit contenir "{{ name.errors?.mustContain }}"
         </mat-error>
 
       </mat-form-field>
-    </div>
-    <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
+
+      <h3>Ingredients</h3>
+      <div formArrayName="ingredients">
+        <div *ngFor="let ing of ingredients.controls, let i=index" [formGroupName]="i">
+          <mat-form-field>
+            <mat-label>Ingredients</mat-label>
+            <mat-select formControlName="ing">
+              <mat-option *ngFor="let ingredient of ingredientList" value="{{ingredient}}">
+                {{ingredient}}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
+              Pas d'ingredient
+            </mat-error>
+
+            <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
+              Pas assez d'ingredient
+            </mat-error>
+
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="addIngredient()">Ajout</button>
+      </div>
+
+      <button mat-raised-button type="submit" (click)="onSubmitForm(model)">Créer</button>
+
+    </form>
   </div>
+  <div class="col-md-6">
+    <app-burger [burger]="burger"></app-burger>
+  </div>
+</div>
 
-  <button mat-raised-button type="submit">Créer</button>
 
-</form>
 
