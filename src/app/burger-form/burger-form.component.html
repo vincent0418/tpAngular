@@ -22,13 +22,13 @@
               </mat-option>
             </mat-select>
 
-            <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
+            <label *ngIf="ingredients.invalid && ingredients.errors?.required">
               Pas d'ingredient
-            </mat-error>
+            </label>
 
-            <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minLength">
+            <label *ngIf="ingredients.invalid && ingredients.errors?.minLength">
               Pas assez d'ingredient
-            </mat-error>
+            </label>
 
           </mat-form-field>
         </div>
@@ -39,7 +39,7 @@
 
     </form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="burger !== undefined">
     <app-burger [burger]="burger"></app-burger>
   </div>
 </div>
