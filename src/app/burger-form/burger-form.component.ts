@@ -9,7 +9,7 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 export class BurgerFormComponent implements OnInit {
   model: FormGroup;
 
-  ingredients: string[] = [
+  ingredientList: string[] = [
     'Cornichon',
     'Fromage',
     'Oignon',
