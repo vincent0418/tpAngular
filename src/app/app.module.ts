@@ -14,12 +14,14 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { BurgerComponent } from './burger/burger.component';
+import {DisplayIngredient} from "./pipes/display-ingredient";
 
 @NgModule({
   declarations: [
     AppComponent,
     BurgerFormComponent,
-    BurgerComponent
+    BurgerComponent,
+    DisplayIngredient
   ],
   imports: [
     BrowserModule,

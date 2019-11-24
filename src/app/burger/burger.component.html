@@ -2,10 +2,11 @@
   <mat-card-title>
     {{ burger.name }}
   </mat-card-title>
-
-  <mat-card-content>
-
+  <img src="assets\img\Pain_Haut.png" alt="fail"/>
+  <mat-card-content *ngFor="let ing of burger.ingredients">
+    <img src="{{ing | displayIngredients}}" alt="Fail"/>
   </mat-card-content>
+  <img src="assets\img\Pain.png" alt="fail"/>
 
   <mat-card-footer>
     {{ burger.creationDate | date: 'fullDate' }}
