@@ -21,6 +21,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <button mat-button color="warn" type="button" (click)="removeIngredient(i)">X</button>
         </div>
 
         <div *ngIf="ingredients.invalid && (ingredients.dirty || ingredients.touched)">

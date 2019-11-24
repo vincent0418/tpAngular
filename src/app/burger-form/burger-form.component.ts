@@ -52,6 +52,10 @@ export class BurgerFormComponent implements OnInit {
     this.ingredients.push(ingredient);
   }
 
+  removeIngredient(i: number) {
+    this.ingredients.removeAt(i);
+  }
+
   onSubmitForm() {
     const formValue = this.model.value;
     this.burger = new Burger(
