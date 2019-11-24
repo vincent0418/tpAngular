@@ -15,7 +15,7 @@
         <div *ngFor="let ing of ingredients.controls, let i=index" [formGroupName]="i">
           <mat-form-field>
             <mat-label>Ingredients</mat-label>
-            <mat-select formControlName="ing">
+            <mat-select formControlName="ing" required>
               <mat-option *ngFor="let ingredient of ingredientList" value="{{ingredient}}">
                 {{ingredient}}
               </mat-option>
@@ -23,13 +23,11 @@
           </mat-form-field>
         </div>
 
-        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.required">
-          Pas d'ingredient
-        </mat-error>
-
-        <mat-error *ngIf="ingredients.invalid && ingredients.errors?.minlength">
-          Pas assez d'ingredient
-        </mat-error>
+        <div *ngIf="ingredients.invalid && (ingredients.dirty || ingredients.touched)">
+          <mat-error *ngIf="ingredients.errors?.minlength">
+            Le nombre d'ingrédient est insuffisant
+          </mat-error>
+        </div>
 
         <button mat-raised-button type="button" color="primary" (click)="addIngredient()">Ajout</button>
 
