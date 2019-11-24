@@ -2,11 +2,14 @@
   <mat-card-title>
     {{ burger.name }}
   </mat-card-title>
-  <img src="assets\img\Pain_Haut.png" alt="fail"/>
-  <mat-card-content *ngFor="let ing of burger.ingredients">
-    <img src="{{ing | displayIngredients}}" alt="Fail"/>
-  </mat-card-content>
-  <img src="assets\img\Pain.png" alt="fail"/>
+  <div class="container">
+    <img class="test" src="assets\img\Pain_Haut.png" alt="fail" [style.z-index]="burger.ingredients.length+1"/>
+    <mat-card-content *ngFor="let ing of burger.ingredients let i=index">
+      <img class="test" src="{{ing | displayIngredients}}" alt="Fail" [style.z-index]="burger.ingredients.length-i"/>
+    </mat-card-content>
+    <img id="endOfBurger" class="test" src="assets\img\Pain.png" alt="fail" [style.z-index]="0"/>
+  </div>
+
 
   <mat-card-footer>
     {{ burger.creationDate | date: 'fullDate' }}
